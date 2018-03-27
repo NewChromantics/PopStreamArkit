@@ -122,9 +122,6 @@ GameObject:
   m_Component:
   - component: {fileID: 9}
   - component: {fileID: 10}
-  - component: {fileID: 12}
-  - component: {fileID: 13}
-  - component: {fileID: 11}
   - component: {fileID: 8}
   - component: {fileID: 14}
   m_Layer: 0
@@ -195,27 +192,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &11
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 7}
-  m_Enabled: 1
---- !u!92 &12
-Behaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 7}
-  m_Enabled: 1
---- !u!124 &13
-Behaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 7}
-  m_Enabled: 1
 --- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -332,7 +308,7 @@ MonoBehaviour:
   startAlignment: 0
   planeDetection: 1
   getPointCloud: 1
-  enableLightEstimation: 1
+  enableLightEstimation: 0
 --- !u!4 &1121666033
 Transform:
   m_ObjectHideFlags: 0
