@@ -1,0 +1,6 @@
+[submodule "Assets/PopRelayClient"]
+	path = Assets/PopRelayClient
+	url = https://github.com/NewChromantics/PopRelayClient
+[submodule "Assets/PopUnityCommon"]
+	path = Assets/PopUnityCommon
+	url = https://github.com/SoylentGraham/PopUnityCommon
