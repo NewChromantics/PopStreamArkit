@@ -40,7 +40,8 @@ public class ArkitStreamer : MonoBehaviour {
 	void SendCameraPosition()
 	{
 		var Packet = new ArkitCameraTransform(ArkitCameraTransform, StreamName);
-		Client.SendJson( Packet );
+		if ( Client.IsConnected)
+			Client.SendJson( Packet );
 	}
 
 
