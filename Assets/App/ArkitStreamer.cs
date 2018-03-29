@@ -3,24 +3,42 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
+
 [System.Serializable]
-public class ArkitCameraTransform : BasePacket
+public class ArkitCameraTransform
 {
-	public Vector3		Position;
-	public Quaternion	Rotation;
-	
-	public ArkitCameraTransform(Transform transform,string StreamName)
+	public Vector3 Position;
+	public Quaternion Rotation;
+
+	public ArkitCameraTransform(Transform transform)
+	{
+		this.Position = transform.localPosition;
+		this.Rotation = transform.localRotation;
+	}
+}
+
+
+[System.Serializable]
+public class ArkitCameraTransformPacket : BasePacket
+{
+	public ArkitCameraTransform Transform;
+
+	public static string EncodingName { get { return typeof(ArkitCameraTransform).ToString(); } }
+
+	public ArkitCameraTransformPacket(Transform transform, string StreamName)
 	{
 		//	this shows that PopRelayClient and PopRelayDecoder probbaly need Encoding() funcs
 		//	encoding is json, but OUR decoder figures that out
 		//	Data is also unused, we just re-decode the original json
 		this.Timecode = PopX.Time.GetTodayUtcTimeMs();
-		this.Encoding = this.GetType().ToString();
+		this.Encoding = ArkitCameraTransformPacket.EncodingName;
 		this.Data = null;
 		this.Stream = StreamName;
+		this.Transform = new ArkitCameraTransform(transform);
 	}
 
 }
+
 
 public class ArkitStreamer : MonoBehaviour {
 
@@ -39,7 +57,7 @@ public class ArkitStreamer : MonoBehaviour {
 
 	void SendCameraPosition()
 	{
-		var Packet = new ArkitCameraTransform(ArkitCameraTransform, StreamName);
+		var Packet = new ArkitCameraTransformPacket(ArkitCameraTransform, StreamName);
 		if ( Client.IsConnected)
 			Client.SendJson( Packet );
 	}
